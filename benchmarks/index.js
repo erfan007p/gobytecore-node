@@ -1,15 +1,15 @@
 'use strict';
 
 var benchmark = require('benchmark');
-var dashdRPC = require('@dashevo/dashd-rpc');
+var gobytedRPC = require('@gobytecoin/gobyted-rpc');
 var async = require('async');
 var maxTime = 20;
 
-console.log('Dash Service native interface vs. Dash JSON RPC interface');
+console.log('GoByte Service native interface vs. GoByte JSON RPC interface');
 console.log('----------------------------------------------------------------------');
 
-// To run the benchmarks a fully synced Dash Core directory is needed. The RPC comands
-// can be modified to match the settings in dash.conf.
+// To run the benchmarks a fully synced GoByte Core directory is needed. The RPC comands
+// can be modified to match the settings in gobyte.conf.
 
 var fixtureData = {
   blockHashes: [
@@ -26,34 +26,34 @@ var fixtureData = {
   ]
 };
 
-var dashd = require('../').services.Dash({
+var gobyted = require('../').services.GoByte({
   node: {
-    datadir: process.env.HOME + '/.dash',
+    datadir: process.env.HOME + '/.gobyte',
     network: {
       name: 'testnet'
     }
   }
 });
 
-dashd.on('error', function(err) {
+gobyted.on('error', function(err) {
   console.error(err.message);
 });
 
-dashd.start(function(err) {
+gobyted.start(function(err) {
   if (err) {
     throw err;
   }
-  console.log('Dash Core started');
+  console.log('GoByte Core started');
 });
 
-dashd.on('ready', function() {
+gobyted.on('ready', function() {
 
-  console.log('Dash Core ready');
+  console.log('GoByte Core ready');
 
-  var client = new dashdRPC({
+  var client = new gobytedRPC({
     host: 'localhost',
     port: 18332,
-    user: 'dash',
+    user: 'gobyte',
     pass: 'local321'
   });
 
@@ -64,12 +64,12 @@ dashd.on('ready', function() {
       var hashesLength = fixtureData.blockHashes.length;
       var txLength = fixtureData.txHashes.length;
 
-      function dashdGetBlockNative(deffered) {
+      function gobytedGetBlockNative(deffered) {
         if (c >= hashesLength) {
           c = 0;
         }
         var hash = fixtureData.blockHashes[c];
-        dashd.getBlock(hash, function(err, block) {
+        gobyted.getBlock(hash, function(err, block) {
           if (err) {
             throw err;
           }
@@ -78,7 +78,7 @@ dashd.on('ready', function() {
         c++;
       }
 
-      function dashdGetBlockJsonRpc(deffered) {
+      function gobytedGetBlockJsonRpc(deffered) {
         if (c >= hashesLength) {
           c = 0;
         }
@@ -92,12 +92,12 @@ dashd.on('ready', function() {
         c++;
       }
 
-      function dashGetTransactionNative(deffered) {
+      function gobyteGetTransactionNative(deffered) {
         if (c >= txLength) {
           c = 0;
         }
         var hash = fixtureData.txHashes[c];
-        dashd.getTransaction(hash, true, function(err, tx) {
+        gobyted.getTransaction(hash, true, function(err, tx) {
           if (err) {
             throw err;
           }
@@ -106,7 +106,7 @@ dashd.on('ready', function() {
         c++;
       }
 
-      function dashGetTransactionJsonRpc(deffered) {
+      function gobyteGetTransactionJsonRpc(deffered) {
         if (c >= txLength) {
           c = 0;
         }
@@ -122,22 +122,22 @@ dashd.on('ready', function() {
 
       var suite = new benchmark.Suite();
 
-      suite.add('dashd getblock (native)', dashdGetBlockNative, {
+      suite.add('gobyted getblock (native)', gobytedGetBlockNative, {
         defer: true,
         maxTime: maxTime
       });
 
-      suite.add('dashd getblock (json rpc)', dashdGetBlockJsonRpc, {
+      suite.add('gobyted getblock (json rpc)', gobytedGetBlockJsonRpc, {
         defer: true,
         maxTime: maxTime
       });
 
-      suite.add('dashd gettransaction (native)', dashGetTransactionNative, {
+      suite.add('gobyted gettransaction (native)', gobyteGetTransactionNative, {
         defer: true,
         maxTime: maxTime
       });
 
-      suite.add('dashd gettransaction (json rpc)', dashGetTransactionJsonRpc, {
+      suite.add('gobyted gettransaction (json rpc)', gobyteGetTransactionJsonRpc, {
         defer: true,
         maxTime: maxTime
       });
@@ -158,7 +158,7 @@ dashd.on('ready', function() {
       throw err;
     }
     console.log('Finished');
-    dashd.stop(function(err) {
+    gobyted.stop(function(err) {
       if (err) {
         console.error('Fail to stop services: ' + err);
         process.exit(1);

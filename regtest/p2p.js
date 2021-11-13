@@ -6,22 +6,22 @@ var path = require('path');
 var index = require('..');
 var log = index.log;
 
-var p2p = require('@dashevo/dashcore-p2p');
+var p2p = require('@gobytecoin/gobytecore-p2p');
 var Peer = p2p.Peer;
 var Messages = p2p.Messages;
 var chai = require('chai');
-var dashcore = require('@dashevo/dashcore-lib');
-var Transaction = dashcore.Transaction;
-var BN = dashcore.crypto.BN;
+var gobytecore = require('@gobytecoin/gobytecore-lib');
+var Transaction = gobytecore.Transaction;
+var BN = gobytecore.crypto.BN;
 var async = require('async');
 var rimraf = require('rimraf');
-var dashd;
+var gobyted;
 
 /* jshint unused: false */
 var should = chai.should();
 var assert = chai.assert;
 var sinon = require('sinon');
-var DashdRPC = require('@dashevo/dashd-rpc');
+var GoBytedRPC = require('@gobytecoin/gobyted-rpc');
 var transactionData = [];
 var blockHashes = [];
 var txs = [];
@@ -29,9 +29,9 @@ var client;
 var messages;
 var peer;
 var coinbasePrivateKey;
-var privateKey = dashcore.PrivateKey();
-var destKey = dashcore.PrivateKey();
-var BufferUtil = dashcore.util.buffer;
+var privateKey = gobytecore.PrivateKey();
+var destKey = gobytecore.PrivateKey();
+var BufferUtil = gobytecore.util.buffer;
 var blocks;
 
 describe('P2P Functionality', function() {
@@ -40,8 +40,8 @@ describe('P2P Functionality', function() {
     this.timeout(200000);
 
     // enable regtest
-    dashcore.Networks.enableRegtest();
-    var regtestNetwork = dashcore.Networks.get('regtest');
+    gobytecore.Networks.enableRegtest();
+    var regtestNetwork = gobytecore.Networks.get('regtest');
     var datadir = __dirname + '/data';
 
     rimraf(datadir + '/regtest', function(err) {
@@ -49,33 +49,33 @@ describe('P2P Functionality', function() {
         throw err;
       }
 
-      dashd = require('../').services.Dash({
+      gobyted = require('../').services.GoByte({
         spawn: {
           datadir: datadir,
-          exec: path.resolve(__dirname, process.env.HOME, './.dashcore/data/dashd')
+          exec: path.resolve(__dirname, process.env.HOME, './.gobytecore/data/gobyted')
         },
         node: {
-          network: dashcore.Networks.testnet
+          network: gobytecore.Networks.testnet
         }
       });
 
-      dashd.on('error', function(err) {
+      gobyted.on('error', function(err) {
         log.error('error="%s"', err.message);
       });
 
-      log.info('Waiting for Dash Core to initialize...');
+      log.info('Waiting for GoByte Core to initialize...');
 
-      dashd.start(function(err) {
+      gobyted.start(function(err) {
         if (err) {
           throw err;
         }
-        log.info('Dashd started');
+        log.info('GoByted started');
 
-        client = new DashdRPC({
+        client = new GoBytedRPC({
           protocol: 'http',
           host: '127.0.0.1',
           port: 30331,
-          user: 'dash',
+          user: 'gobyte',
           pass: 'local321',
           rejectUnauthorized: false
         });
@@ -130,11 +130,11 @@ describe('P2P Functionality', function() {
                         throw err;
                       }
                       utxo.privateKeyWIF = privresponse.result;
-                      var tx = dashcore.Transaction();
+                      var tx = gobytecore.Transaction();
                       tx.from(utxo);
                       tx.change(privateKey.toAddress());
                       tx.to(destKey.toAddress(), utxo.amount * 1e8 - 1000);
-                      tx.sign(dashcore.PrivateKey.fromWIF(utxo.privateKeyWIF));
+                      tx.sign(gobytecore.PrivateKey.fromWIF(utxo.privateKeyWIF));
                       txs.push(tx);
                       finished();
                     });
@@ -163,8 +163,8 @@ describe('P2P Functionality', function() {
     this.timeout(20000);
     peer.on('disconnect', function() {
       log.info('Peer disconnected');
-      dashd.node.stopping = true;
-      dashd.stop(function(err, result) {
+      gobyted.node.stopping = true;
+      gobyted.stop(function(err, result) {
         done();
       });
     });
@@ -176,7 +176,7 @@ describe('P2P Functionality', function() {
 
     var usedTxs = {};
 
-    dashd.on('tx', function(buffer) {
+    gobyted.on('tx', function(buffer) {
       var txFromResult = new Transaction().fromBuffer(buffer);
       var tx = usedTxs[txFromResult.id];
       should.exist(tx);
