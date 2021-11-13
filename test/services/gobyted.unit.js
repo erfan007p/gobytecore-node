@@ -241,25 +241,25 @@ describe('GoByte Service', function() {
     it('will add a valid address', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter = new EventEmitter();
-      gobyted.subscribeAddress(emitter, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      should.exist(gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
+      gobyted.subscribeAddress(emitter, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      should.exist(gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
     });
     it('will handle multiple address subscribers', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscribeAddress(emitter2, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      should.exist(gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(2);
+      gobyted.subscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscribeAddress(emitter2, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      should.exist(gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(2);
     });
     it('will not add the same emitter twice', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
-      gobyted.subscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      should.exist(gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
+      gobyted.subscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      should.exist(gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
     });
   });
 
@@ -275,58 +275,58 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscribeAddress(emitter2, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      should.exist(gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(2);
-      gobyted.unsubscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
+      gobyted.subscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscribeAddress(emitter2, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      should.exist(gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(2);
+      gobyted.unsubscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
     });
     it('will unsubscribe subscriptions for an emitter', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter1, emitter2];
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter1, emitter2];
       gobyted.unsubscribeAddress(emitter1);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
     });
     it('will NOT unsubscribe subscription with missing address', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter1, emitter2];
-      gobyted.unsubscribeAddress(emitter1, ['XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(2);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter1, emitter2];
+      gobyted.unsubscribeAddress(emitter1, ['GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(2);
     });
     it('will NOT unsubscribe subscription with missing emitter', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter2];
-      gobyted.unsubscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'][0].should.equal(emitter2);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter2];
+      gobyted.unsubscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'][0].should.equal(emitter2);
     });
     it('will remove empty addresses', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter1, emitter2];
-      gobyted.unsubscribeAddress(emitter1, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      gobyted.unsubscribeAddress(emitter2, ['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
-      should.not.exist(gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi']);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter1, emitter2];
+      gobyted.unsubscribeAddress(emitter1, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      gobyted.unsubscribeAddress(emitter2, ['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
+      should.not.exist(gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY']);
     });
     it('will unsubscribe emitter for all addresses', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter1, emitter2];
-      gobyted.subscriptions.address['XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs'] = [emitter1, emitter2];
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter1, emitter2];
+      gobyted.subscriptions.address['GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m'] = [emitter1, emitter2];
       sinon.spy(gobyted, 'unsubscribeAddressAll');
       gobyted.unsubscribeAddress(emitter1);
       gobyted.unsubscribeAddressAll.callCount.should.equal(1);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
-      gobyted.subscriptions.address['XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs'].length.should.equal(1);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
+      gobyted.subscriptions.address['GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m'].length.should.equal(1);
     });
   });
 
@@ -342,15 +342,15 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var emitter1 = new EventEmitter();
       var emitter2 = new EventEmitter();
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'] = [emitter1, emitter2];
-      gobyted.subscriptions.address['XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs'] = [emitter1, emitter2];
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'] = [emitter1, emitter2];
+      gobyted.subscriptions.address['GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m'] = [emitter1, emitter2];
       gobyted.subscriptions.address['mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW'] = [emitter2];
-      gobyted.subscriptions.address['7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz'] = [emitter1];
+      gobyted.subscriptions.address['5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA'] = [emitter1];
       gobyted.unsubscribeAddress(emitter1);
-      gobyted.subscriptions.address['8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi'].length.should.equal(1);
-      gobyted.subscriptions.address['XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs'].length.should.equal(1);
+      gobyted.subscriptions.address['9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY'].length.should.equal(1);
+      gobyted.subscriptions.address['GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m'].length.should.equal(1);
       gobyted.subscriptions.address['mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW'].length.should.equal(1);
-      should.not.exist(gobyted.subscriptions.address['7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz']);
+      should.not.exist(gobyted.subscriptions.address['5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA']);
     });
   });
 
@@ -785,7 +785,7 @@ describe('GoByte Service', function() {
         }
       };
       var gobyted = new GoByteService(config);
-      gobyted._getDefaultConf().rpcport.should.equal(9998);
+      gobyted._getDefaultConf().rpcport.should.equal(12454);
     });
     it('will get default rpc port for testnet', function() {
       var config = {
@@ -798,7 +798,7 @@ describe('GoByte Service', function() {
         }
       };
       var gobyted = new GoByteService(config);
-      gobyted._getDefaultConf().rpcport.should.equal(19998);
+      gobyted._getDefaultConf().rpcport.should.equal(13454);
     });
     it('will get default rpc port for regtest', function() {
       gobytecore.Networks.enableRegtest();
@@ -812,7 +812,7 @@ describe('GoByte Service', function() {
         }
       };
       var gobyted = new GoByteService(config);
-      gobyted._getDefaultConf().rpcport.should.equal(19998);
+      gobyted._getDefaultConf().rpcport.should.equal(13454);
     });
   });
 
@@ -1104,10 +1104,10 @@ describe('GoByte Service', function() {
   describe('#_getAddressesFromTransaction', function() {
     it('will get results using gobytecore.Transaction', function() {
       var gobyted = new GoByteService(baseConfig);
-      var wif = 'XGLgPK8gbmzU7jcbw34Pj55AXV7SmG6carKuiwtu4WtvTjyTbpwX';
+      var wif = 'WKQCxDCKqaVdo1kCWPQL3kK1Ye4yhSU6NxZ3yHnRgNVwHQ3XsbX5';
       var privkey = gobytecore.PrivateKey.fromWIF(wif);
       var inputAddress = privkey.toAddress(gobytecore.Networks.testnet);
-      var outputAddress = gobytecore.Address('8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi');
+      var outputAddress = gobytecore.Address('9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY');
       var tx = gobytecore.Transaction();
       tx.from({
         txid: '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b',
@@ -1155,7 +1155,7 @@ describe('GoByte Service', function() {
     it('will return unique values', function() {
       var gobyted = new GoByteService(baseConfig);
       var tx = gobytecore.Transaction();
-      var address = gobytecore.Address('8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi');
+      var address = gobytecore.Address('9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY');
       tx.addOutput(gobytecore.Transaction.Output({
         script: gobytecore.Script(address),
         satoshis: 5000000000
@@ -1172,7 +1172,7 @@ describe('GoByte Service', function() {
   describe('#_notifyAddressTxidSubscribers', function() {
     it('will emit event if matching addresses', function(done) {
       var gobyted = new GoByteService(baseConfig);
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted._getAddressesFromTransaction = sinon.stub().returns([address]);
       var emitter = new EventEmitter();
       gobyted.subscriptions.address[address] = [emitter];
@@ -1189,7 +1189,7 @@ describe('GoByte Service', function() {
     });
     it('will NOT emit event without matching addresses', function() {
       var gobyted = new GoByteService(baseConfig);
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted._getAddressesFromTransaction = sinon.stub().returns([address]);
       var emitter = new EventEmitter();
       var txid = '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0';
@@ -2286,7 +2286,7 @@ describe('GoByte Service', function() {
           getAddressBalance: sinon.stub().callsArgWith(1, {code: -1, message: 'Test error'})
         }
       });
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       var options = {};
       gobyted.getAddressBalance(address, options, function(err) {
         err.should.be.instanceof(Error);
@@ -2306,7 +2306,7 @@ describe('GoByte Service', function() {
           getAddressBalance: getAddressBalance
         }
       });
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       var options = {};
       gobyted.getAddressBalance(address, options, function(err, data) {
         if (err) {
@@ -2338,7 +2338,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err) {
         should.exist(err);
         err.should.be.instanceof(errors.RPCError);
@@ -2349,10 +2349,10 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var expectedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
-          script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
+          script: '76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac',
           satoshis: 7679241,
           height: 207111
         }
@@ -2367,7 +2367,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2381,10 +2381,10 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var expectedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
-          script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
+          script: '76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac',
           satoshis: 7679241,
           height: 207111
         }
@@ -2400,7 +2400,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2424,7 +2424,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2433,14 +2433,14 @@ describe('GoByte Service', function() {
         {
           txid: 'f637384e9f81f18767ea50e00bce58fc9848b6588a1130529eebba22a410155f',
           satoshis: 100000,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342833133
         },
         {
           txid: 'f71bccef3a8f5609c7f016154922adbfe0194a96fb17a798c24077c18d0a9345',
           satoshis: 400000,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342954813
         }
@@ -2448,7 +2448,7 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var confirmedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2458,18 +2458,18 @@ describe('GoByte Service', function() {
       ];
       var expectedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           outputIndex: 1,
           satoshis: 400000,
-          script: '76a914809dc14496f99b6deb722cf46d89d22f4beb8efd88ac',
+          script: '76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac',
           timestamp: 1461342954813,
           txid: 'f71bccef3a8f5609c7f016154922adbfe0194a96fb17a798c24077c18d0a9345'
         },
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           outputIndex: 0,
           satoshis: 100000,
-          script: '76a914809dc14496f99b6deb722cf46d89d22f4beb8efd88ac',
+          script: '76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac',
           timestamp: 1461342833133,
           txid: 'f637384e9f81f18767ea50e00bce58fc9848b6588a1130529eebba22a410155f'
         }
@@ -2487,7 +2487,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2502,7 +2502,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2511,7 +2511,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2521,7 +2521,7 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var confirmedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2529,7 +2529,7 @@ describe('GoByte Service', function() {
           height: 207111
         },
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 2,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2550,7 +2550,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2564,7 +2564,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2573,7 +2573,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2582,7 +2582,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2591,16 +2591,16 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: 100000,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
-          script: '76a914809dc14496f99b6deb722cf46d89d22f4beb8efd88ac',
+          script: '76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac',
           timestamp: 1461342833133
         }
       ];
       var gobyted = new GoByteService(baseConfig);
       var confirmedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 0,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2608,7 +2608,7 @@ describe('GoByte Service', function() {
           height: 207111
         },
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2616,7 +2616,7 @@ describe('GoByte Service', function() {
           height: 207111
         },
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 2,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2637,7 +2637,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2651,28 +2651,28 @@ describe('GoByte Service', function() {
         {
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           satoshis: 7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707724
         },
         {
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           satoshis: 7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342707724
         },
         {
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           satoshis: 7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           timestamp: 1461342707724,
           index: 2,
         },
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2681,7 +2681,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2690,7 +2690,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: -7679241,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2699,7 +2699,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: 100000,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 1,
           timestamp: 1461342833133
         }
@@ -2719,7 +2719,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2728,7 +2728,7 @@ describe('GoByte Service', function() {
         utxos[0].address.should.equal(address);
         utxos[0].txid.should.equal('e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce');
         utxos[0].outputIndex.should.equal(1);
-        utxos[0].script.should.equal('76a914809dc14496f99b6deb722cf46d89d22f4beb8efd88ac');
+        utxos[0].script.should.equal('76a9144538d3d65cc14f64c1fbfdc6755379960be38ece88ac');
         utxos[0].timestamp.should.equal(1461342833133);
         done();
       });
@@ -2738,7 +2738,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: 0,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725,
           prevtxid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
@@ -2748,7 +2748,7 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var confirmedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2769,7 +2769,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2783,7 +2783,7 @@ describe('GoByte Service', function() {
         {
           txid: 'e9dcf22807db77ac0276b03cc2d3a8b03c4837db8ac6650501ef45af1c807cce',
           satoshis: 10000,
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           index: 0,
           timestamp: 1461342707725
         }
@@ -2791,7 +2791,7 @@ describe('GoByte Service', function() {
       var gobyted = new GoByteService(baseConfig);
       var confirmedUtxos = [
         {
-          address: 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs',
+          address: 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m',
           txid: '46f24e0c274fc07708b781963576c4c5d5625d926dbb0a17fa865dcd9fe58ea0',
           outputIndex: 1,
           script: '76a914f399b4b8894f1153b96fce29f05e6e116eb4c21788ac',
@@ -2812,7 +2812,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err, utxos) {
         if (err) {
           return done(err);
@@ -2831,7 +2831,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: true
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err) {
         err.should.be.instanceOf(Error);
         done();
@@ -2846,7 +2846,7 @@ describe('GoByte Service', function() {
         }
       });
       var options = {};
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressUnspentOutputs(address, options, function(err) {
         getAddressMempool.callCount.should.equal(1);
         done();
@@ -2964,7 +2964,7 @@ describe('GoByte Service', function() {
         }
       });
       var options = {};
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, options, function(err) {
         should.exist(err);
         err.should.be.instanceof(errors.RPCError);
@@ -2980,7 +2980,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, options, function(err) {
         should.exist(err);
         err.should.be.instanceof(errors.RPCError);
@@ -3010,7 +3010,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, options, function(err, txids) {
         if (err) {
           return done(err);
@@ -3036,7 +3036,7 @@ describe('GoByte Service', function() {
       var options = {
         queryMempool: false
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, options, function(err, txids) {
         if (err) {
           return done(err);
@@ -3074,7 +3074,7 @@ describe('GoByte Service', function() {
         start: 4,
         end: 2
       };
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, options, function(err, txids) {
         if (err) {
           return done(err);
@@ -3121,7 +3121,7 @@ describe('GoByte Service', function() {
           getAddressMempool: getAddressMempool
         }
       });
-      var address = 'XnQuJpAgEDNtRwoXWLfuEs69cMgCYS8rgs';
+      var address = 'GQ9w7ojnrEL286oZsxAQ9gfjQfGFmMoh1m';
       gobyted.getAddressTxids(address, {queryMempool: false}, function(err, txids) {
         if (err) {
           return done(err);
@@ -3375,37 +3375,37 @@ describe('GoByte Service', function() {
   describe('#_getAddressStrings', function() {
     it('will get address strings from gobytecore addresses', function() {
       var addresses = [
-        gobytecore.Address('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN'),
-        gobytecore.Address('7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz'),
+        gobytecore.Address('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1'),
+        gobytecore.Address('5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA'),
       ];
       var gobyted = new GoByteService(baseConfig);
       var strings = gobyted._getAddressStrings(addresses);
-      strings[0].should.equal('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN');
-      strings[1].should.equal('7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz');
+      strings[0].should.equal('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1');
+      strings[1].should.equal('5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA');
     });
     it('will get address strings from strings', function() {
       var addresses = [
-        'XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN',
-        '7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz',
+        'GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1',
+        '5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA',
       ];
       var gobyted = new GoByteService(baseConfig);
       var strings = gobyted._getAddressStrings(addresses);
-      strings[0].should.equal('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN');
-      strings[1].should.equal('7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz');
+      strings[0].should.equal('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1');
+      strings[1].should.equal('5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA');
     });
     it('will get address strings from mixture of types', function() {
       var addresses = [
-        gobytecore.Address('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN'),
-        '7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz',
+        gobytecore.Address('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1'),
+        '5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA',
       ];
       var gobyted = new GoByteService(baseConfig);
       var strings = gobyted._getAddressStrings(addresses);
-      strings[0].should.equal('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN');
-      strings[1].should.equal('7d5169eBcGHF4BYC6DTffTyeCpWbrZnNgz');
+      strings[0].should.equal('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1');
+      strings[1].should.equal('5Dzk2kTvrfZNpMPhqbpdAA4t66LACCeCrA');
     });
     it('will give error with unknown', function() {
       var addresses = [
-        gobytecore.Address('XjxDQFjTNEP9dcrJhBLvy5i1Dobz4x1LJN'),
+        gobytecore.Address('GYQB3b2EhTHQcPT4SmnFmE8Jmc1a7uTNg1'),
         0,
       ];
       var gobyted = new GoByteService(baseConfig);
@@ -4319,12 +4319,12 @@ describe('GoByte Service', function() {
           getBlockHash: getBlockHash
         }
       });
-      gobyted._maybeGetBlockHash('8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi', function(err, hash) {
+      gobyted._maybeGetBlockHash('9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY', function(err, hash) {
         if (err) {
           return done(err);
         }
         getBlockHash.callCount.should.equal(0);
-        hash.should.equal('8oUSpiq5REeEKAzS1qSXoJbZ9TRfH1L6mi');
+        hash.should.equal('9JKKKdf3vCwdtawW1DnX2yE9SXNbGd2KqY');
         done();
       });
     });
@@ -5208,15 +5208,15 @@ describe('GoByte Service', function() {
         var gobject = sinon.stub().callsArgWith(1, null, {
             result: [{
                 "Hash": "9ce5609d41b88fca51dd3f4ad098467cf8c6f2c1b2adf93a6862a7b9bdf01a00",
-                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438343830393436302c226e616d65223a2264363534366361353232363730633664303039333662393562323766666233393631643063663234222c227061796d656e745f61646472657373223a22796a42746b73586b47483731693341346d6e374b7848793975634d6473717a756b57222c227061796d656e745f616d6f756e74223a332c2273746172745f65706f6368223a313438343636313730392c2274797065223a312c2275726c223a2268747470733a2f2f7777772e646173682e6f7267227d5d5d",
+                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438343830393436302c226e616d65223a2264363534366361353232363730633664303039333662393562323766666233393631643063663234222c227061796d656e745f61646472657373223a226e4b516f7564355a456f614638546d5546705271655747584c77354e6552657a3839222c227061796d656e745f616d6f756e74223a332c2273746172745f65706f6368223a313438343636313730392c2274797065223a312c2275726c223a2268747470733a2f2f676f627974652e6e6574776f726b227d5d5d",
                 "DataObject": {
                     "end_epoch": 1484809460,
                     "name": "d6546ca522670c6d00936b95b27ffb3961d0cf24",
-                    "payment_address": "yjBtksXkGH71i3A4mn7KxHy9ucMdsqzukW",
+                    "payment_address": "nKQoud5ZEoaF8TmUFpRqeWGXLw5NeRez89",
                     "payment_amount": 3,
                     "start_epoch": 1484661709,
                     "type": 1,
-                    "url": "https://www.gobyte.network"
+                    "url": "https://gobyte.network"
                 },
                 "AbsoluteYesCount": 0,
                 "YesCount": 0,
@@ -5224,15 +5224,15 @@ describe('GoByte Service', function() {
                 "AbstainCount": 0
             }, {
                 "Hash": "21af004754d57660a5b83818b26263699b9e25c53a46395b7386e786d1644c00",
-                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438343636353636372c226e616d65223a2236306164663935366535313138663331633131353564613866373662396134376464363863306361222c227061796d656e745f61646472657373223a227967684b6f5272526a31696f644c6f684e4e704b52504a5a7673537562367a626756222c227061796d656e745f616d6f756e74223a39382c2273746172745f65706f6368223a313438343635343931352c2274797065223a312c2275726c223a2268747470733a2f2f7777772e646173682e6f7267227d5d5d",
+                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438343636353636372c226e616d65223a2236306164663935366535313138663331633131353564613866373662396134376464363863306361222c227061796d656e745f61646472657373223a226e4b61346143546b5774356e576d364c6a385239797473356d4a535742734c61525a222c227061796d656e745f616d6f756e74223a39382c2273746172745f65706f6368223a313438343635343931352c2274797065223a312c2275726c223a2268747470733a2f2f676f627974652e6e6574776f726b227d5d5d",
                 "DataObject": {
                     "end_epoch": 1484665667,
                     "name": "60adf956e5118f31c1155da8f76b9a47dd68c0ca",
-                    "payment_address": "yghKoRrRj1iodLohNNpKRPJZvsSub6zbgV",
+                    "payment_address": "nKa4aCTkWt5nWm6Lj8R9yts5mJSWBsLaRZ",
                     "payment_amount": 98,
                     "start_epoch": 1484654915,
                     "type": 1,
-                    "url": "https://www.gobyte.network"
+                    "url": "https://gobyte.network"
                 },
                 "AbsoluteYesCount": 0,
                 "YesCount": 0,
@@ -5240,15 +5240,15 @@ describe('GoByte Service', function() {
                 "AbstainCount": 0
             }, {
                 "Hash": "4ef24027c631c43035aa4cf5c672e1298311decd9cffbd16731f454c9c0d6d00",
-                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438333835353139332c226e616d65223a2237656139616366663561653833643863396532313764333061326234643130656638663137316638222c227061796d656e745f61646472657373223a22795a3744596b44484348664831647737724b6459614b6356796b5a6d756e62714e4c222c227061796d656e745f616d6f756e74223a38342c2273746172745f65706f6368223a313438333736353238322c2274797065223a312c2275726c223a2268747470733a2f2f7777772e646173682e6f7267227d5d5d",
+                "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438333835353139332c226e616d65223a2237656139616366663561653833643863396532313764333061326234643130656638663137316638222c227061796d656e745f61646472657373223a226e4731444e78343574523978734a7650784a7251736e5576483555454c467966716f222c227061796d656e745f616d6f756e74223a38342c2273746172745f65706f6368223a313438333736353238322c2274797065223a312c2275726c223a2268747470733a2f2f676f627974652e6e6574776f726b227d5d5d",
                 "DataObject": {
                     "end_epoch": 1483855193,
                     "name": "7ea9acff5ae83d8c9e217d30a2b4d10ef8f171f8",
-                    "payment_address": "yZ7DYkDHCHfH1dw7rKdYaKcVykZmunbqNL",
+                    "payment_address": "nG1DNx45tR9xsJvPxJrQsnUvH5UELFyfqo",
                     "payment_amount": 84,
                     "start_epoch": 1483765282,
                     "type": 1,
-                    "url": "https://www.gobyte.network"
+                    "url": "https://gobyte.network"
                 },
                 "AbsoluteYesCount": 0,
                 "YesCount": 0,
@@ -5291,8 +5291,8 @@ describe('GoByte Service', function() {
       var hash = "4ef24027c631c43035aa4cf5c672e1298311decd9cffbd16731f454c9c0d6d00";
       var gobject = sinon.stub().callsArgWith(2, null, {
         result: {
-          "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438333835353139332c226e616d65223a2237656139616366663561653833643863396532313764333061326234643130656638663137316638222c227061796d656e745f61646472657373223a22795a3744596b44484348664831647737724b6459614b6356796b5a6d756e62714e4c222c227061796d656e745f616d6f756e74223a38342c2273746172745f65706f6368223a313438333736353238322c2274797065223a312c2275726c223a2268747470733a2f2f7777772e646173682e6f7267227d5d5d",
-          "DataString": "[[\"proposal\",{\"end_epoch\":1483855193,\"name\":\"7ea9acff5ae83d8c9e217d30a2b4d10ef8f171f8\",\"payment_address\":\"yZ7DYkDHCHfH1dw7rKdYaKcVykZmunbqNL\",\"payment_amount\":84,\"start_epoch\":1483765282,\"type\":1,\"url\":\"https://www.gobyte.network\"}]]",
+          "DataHex": "5b5b2270726f706f73616c222c7b22656e645f65706f6368223a313438333835353139332c226e616d65223a2237656139616366663561653833643863396532313764333061326234643130656638663137316638222c227061796d656e745f61646472657373223a226e4c524870643742733956794d3435723558544871424d6474337278376e7470654d222c227061796d656e745f616d6f756e74223a38342c2273746172745f65706f6368223a313438333736353238322c2274797065223a312c2275726c223a2268747470733a2f2f676f627974652e6e6574776f726b227d5d5d",
+          "DataString": "[[\"proposal\",{\"end_epoch\":1483855193,\"name\":\"7ea9acff5ae83d8c9e217d30a2b4d10ef8f171f8\",\"payment_address\":\"nLRHpd7Bs9VyM45r5XTHqBMdt3rx7ntpeM\",\"payment_amount\":84,\"start_epoch\":1483765282,\"type\":1,\"url\":\"https://gobyte.network\"}]]",
           "Hash": "4ef24027c631c43035aa4cf5c672e1298311decd9cffbd16731f454c9c0d6d00",
           "CollateralHash": "6be3a3ae49498ec8f4e5cba56ac44164aeb78e57f2dbc716f4ff863034830d08",
           "CreationTime": 1483724928,
@@ -5342,11 +5342,11 @@ describe('GoByte Service', function() {
         var DataObject = result[0].DataObject;
         should.equal(DataObject.end_epoch, 1483855193);
         should.equal(DataObject.name, '7ea9acff5ae83d8c9e217d30a2b4d10ef8f171f8');
-        should.equal(DataObject.payment_address, 'yZ7DYkDHCHfH1dw7rKdYaKcVykZmunbqNL');
+        should.equal(DataObject.payment_address, 'nLRHpd7Bs9VyM45r5XTHqBMdt3rx7ntpeM');
         should.equal(DataObject.payment_amount, 84);
         should.equal(DataObject.start_epoch, 1483765282);
         should.equal(DataObject.type, 1);
-        should.equal(DataObject.url, 'https://www.gobyte.network');
+        should.equal(DataObject.url, 'https://gobyte.network');
         done();
       });
     });
@@ -5431,8 +5431,8 @@ describe('GoByte Service', function() {
 					      });
                       case "payee":
 	                      return cb(null, { result:
-		                      { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "Xfpp5BxPfFistPPjTe6FucYmtDVmT1GDG3",
-			                      'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "Xn16rfdygfViHe2u36jkDUs9NLmUrUsEKa"}
+		                      { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "GM2Pgk834UThFpuM3SmoKekGVrZ8vE5ddP",
+			                      'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "GTWgMwC57QzEn7nBCwMWxGRpvm9TG1F3w6"}
 	                      });
 				      case "lastseen":
 					      return cb(null, { result:
@@ -5470,7 +5470,7 @@ describe('GoByte Service', function() {
 		    MNList[0].rank.should.equal(1);
 		    MNList[0].ip.should.equal("108.61.209.47:9999");
 		    MNList[0].protocol.should.equal(70206);
-		    MNList[0].payee.should.equal("Xfpp5BxPfFistPPjTe6FucYmtDVmT1GDG3");
+		    MNList[0].payee.should.equal("GM2Pgk834UThFpuM3SmoKekGVrZ8vE5ddP");
 		    MNList[0].activeseconds.should.equal(7016289);
 		    MNList[0].lastseen.should.equal(1502078120);
 		    done();
@@ -5496,8 +5496,8 @@ describe('GoByte Service', function() {
                 });
               case "payee":
                 return cb(null, { result:
-                  { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "Xfpp5BxPfFistPPjTe6FucYmtDVmT1GDG3",
-                    'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "Xn16rfdygfViHe2u36jkDUs9NLmUrUsEKa"}
+                  { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "GM2Pgk834UThFpuM3SmoKekGVrZ8vE5ddP",
+                    'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "GTWgMwC57QzEn7nBCwMWxGRpvm9TG1F3w6"}
                 });
               case "lastseen":
                 return cb(null, { result:
@@ -5551,8 +5551,8 @@ describe('GoByte Service', function() {
                 });
               case "payee":
                 return cb(null, { result:
-                  { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "Xfpp5BxPfFistPPjTe6FucYmtDVmT1GDG3",
-                    'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "Xn16rfdygfViHe2u36jkDUs9NLmUrUsEKa"}
+                  { '06c4c53b64019a021e8597c19e40807038cab4cd422ca9241db82aa19887354b-0': "GM2Pgk834UThFpuM3SmoKekGVrZ8vE5ddP",
+                    'b76bafae974b80204e79858eb62aedec41159519c90d23f811cca1eca40f2e4c-1': "GTWgMwC57QzEn7nBCwMWxGRpvm9TG1F3w6"}
                 });
               case "lastseen":
                 return cb(null, { result:
